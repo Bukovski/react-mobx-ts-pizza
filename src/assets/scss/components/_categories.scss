@@ -1,0 +1,36 @@
+.categories {
+  flex: 1;
+  max-width: 80%;
+  overflow: auto;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow:  hidden;
+  
+    li {
+      display: inline-block;
+      padding: 13px 30px;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: background-color 0.1s ease-in-out;
+      background-color: $gray;
+      cursor: pointer;
+      @include noselect();
+  
+      &:hover {
+        background-color: darken($gray, 2%);
+      }
+
+      &:active {
+        background-color: darken($gray, 5%);
+      }
+
+      &.active {
+        background-color: #282828;
+        color: #fff;
+      }
+    }
+  }
+}

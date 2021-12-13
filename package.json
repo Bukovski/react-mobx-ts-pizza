@@ -1,0 +1,99 @@
+{
+  "name": "react-mobx-ts-pizza",
+  "version": "0.1.0",
+  "private": false,
+  "keywords": [
+    "react ts",
+    "react typescript",
+    "react api",
+    "react sass",
+    "pizza order",
+    "react test",
+    "mobx test",
+    "react mobx",
+    "react testing-library"
+  ],
+  "author": "Kirill Bukovski",
+  "dependencies": {
+    "@types/jest": "^26.0.24",
+    "@types/node": "^12.20.27",
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.3.0",
+    "@testing-library/jest-dom": "^5.15.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "axios": "^0.21.4",
+    "classnames": "^2.3.1",
+    "json-server": "^0.17.0",
+    "mobx": "^6.3.7",
+    "mobx-react": "^7.2.1",
+    "node-sass": "^6.0.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-scripts": "^3.4.4",
+    "react-content-loader": "^6.0.3",
+    "react-error-boundary": "^3.1.3",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
+    "typescript": "^4.4.3",
+    "web-vitals": "^1.1.2"
+  },
+  "devDependencies": {
+    "coveralls": "^3.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:cover": "CI=true npm test -- --env=jsdom --coverage",
+    "test:coveralls": "npm run test:cover && coveralls < coverage/lcov.info",
+    "eject": "react-scripts eject",
+    "scss": "node-sass src/assets/scss/main.scss -o src/",
+    "watch-scss": "node-sass --watch src/assets/scss/main.scss -o src/",
+    "build-scss": "npm run scss",
+    "server": "node server.js",
+    "json-server": "json-server --watch public/db.json --port=3001"
+  },
+  "proxy": "http://localhost:3001/db",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/src/**/*.{js,jsx}",
+      "!<rootDir>/src/mini-examples/*.{js,jsx}",
+      "!<rootDir>/src/containers/*.{js,jsx}",
+      "!<rootDir>/src/app.jsx",
+      "!<rootDir>/src/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": [
+      "html",
+      "text",
+      "lcov"
+    ]
+  }
+}
