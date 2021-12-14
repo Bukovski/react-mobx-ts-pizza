@@ -10,14 +10,13 @@
         <img src="./screenshots/icon-typescript.jpg" alt="type-script-logo" title="type-script" width="120"/>
     </a>
     <a href="https://redux.js.org/">
-        <img src="./screenshots/icon-redux.jpg" alt="redux-logo" title="redux" width="120"/>
+        <img src="./screenshots/icon-mobx.jpg" alt="mobx-logo" title="mobx" width="120"/>
     </a>
     <a href="https://reactrouter.com/">
         <img src="./screenshots/icon-react-router.jpg" alt="react-router-logo" title="react-router" width="120"/>
     </a>
 </p>
 
-[![Coverage Status](https://coveralls.io/repos/github/Bukovski/redux-ts-pizza/badge.svg?branch=main)](https://coveralls.io/github/Bukovski/redux-ts-pizza?branch=main)
 
 ## Order pizza in our educational online store.
 
@@ -60,11 +59,9 @@ npm run start
 - [axios](https://github.com/axios/axios) is Promise module for client (browser) requests it uses XMLHttpRequests
 - [react-content-loader](https://github.com/danilowoz/react-content-loader) component for easily create placeholder loadings [Loader template creator](https://skeletonreact.com/)
 - [react-error-boundary](https://github.com/bvaughn/react-error-boundary) catches errors in the wrapped component
+- [mobx](https://mobx.js.org/README.html) state management
+- [mobx-react](https://github.com/mobxjs/mobx-react) component wrapper for combining React with MobX
+- [mobx-persist](https://github.com/pinqy520/mobx-persist) save data from mobx store to localStorage
 - load picture for error message from [error-picture](https://icons8.ru/illustrations/web-elements/404-error) 
 - [coveralls](https://github.com/nickmerwin/node-coveralls) - coverage reporting of [coveralls.io](https://coveralls.io/) and add a cool coverage button
 
-![main-page](./screenshots/main-page.jpg)
-![cart-with-orders](./screenshots/cart-with-order.jpg)
-![cart-empty](./screenshots/cart-empty.jpg)
-![error-page](./screenshots/error-page.jpg)
-![404-page](./screenshots/404-page.jpg)

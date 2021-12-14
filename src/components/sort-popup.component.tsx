@@ -3,7 +3,10 @@ import useComponentVisible from "../hooks/useComponentVisible";
 
 
 interface ISortPopup {
-  items: string[]
+  items: {
+    name : string,
+    type : string
+  }[]
 }
 
 
@@ -12,7 +15,7 @@ const SortPopup = (props: ISortPopup) => {
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
   const [ activeItem, setActiveItem ] = useState<number>(0);
-  const activeLabel = items[ activeItem ];
+  const activeLabel = items[ activeItem ].name;
 
   const toggleVisiblePopup = () => setIsComponentVisible(!isComponentVisible);
 
@@ -45,12 +48,12 @@ const SortPopup = (props: ISortPopup) => {
         <div className="sort__popup">
           <ul>
             { items &&
-            items.map((name, index) => (
+            items.map((itemObj, index) => (
               <li
                 onClick={ () => onSelectItem(index) }
                 className={ activeItem === index ? 'active' : '' }
-                key={ `${ name }_${ index }` }>
-                { name }
+                key={ `${ itemObj.type }_${ index }` }>
+                { itemObj.name }
               </li>
             )) }
           </ul>

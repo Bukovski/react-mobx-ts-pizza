@@ -1,22 +1,14 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-
-
-interface IPizzaBlock {
-  name: string,
-  imageUrl: string,
-  price: number,
-  types: number[],
-  sizes: number[]
-}
+import { IPizzasJson } from "../types/pizzas.type";
 
 
 
-const PizzaBlock = (props: IPizzaBlock) => {
+const PizzaBlock = (props: IPizzasJson) => {
   const { name, imageUrl, price, types, sizes } = props;
 
-  const availableTypes = [ 'тонкое', 'традиционное' ];
-  const availableSizes = [ 26, 30, 40 ];
+  const availableTypes: string[] = [ 'тонкое', 'традиционное' ];
+  const availableSizes: number[] = [ 26, 30, 40 ];
 
   const [ activeType, setActiveType ] = useState(types[ 0 ]);
   const [ activeSize, setActiveSize ] = useState(sizes[ 0 ]);

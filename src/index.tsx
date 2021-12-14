@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from "mobx-react";
 import './main.css';
 import App from './App';
+import { rootStore } from "./store";
 
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router>
+  <Router>
+    <Provider { ...rootStore }>
       <App />
-    </Router>
-  </React.StrictMode>,
+    </Provider>
+  </Router>,
   document.getElementById('root')
 );
