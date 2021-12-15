@@ -1,6 +1,6 @@
-import { action, computed, makeObservable, observable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import { IFiltersStore } from "../types/filters.type";
-import { IFiltersSortByState } from "../../../redux-ts-pizza/src/types/filters.type";
+import { IFiltersSortByState } from "../types/filters.type";
 
 
 export default class FilterStore implements IFiltersStore {

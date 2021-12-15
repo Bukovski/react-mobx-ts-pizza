@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
 import { inject, observer } from "mobx-react";
 
-import { Categories, PizzaBlock, PizzaLoadingBlock, SortPopup } from '../components';
+import { Categories, PizzaBlock, PizzaLoadingBlock, SortPopup, ErrorIndicator } from '../components';
 
 import { IFiltersSortByState, IFiltersStore } from "../types/filters.type";
 import { IPizzasBlockNewObject, IPizzasStore } from "../types/pizzas.type";
 import { ICartStore } from "../types/cart.type";
-import { ErrorIndicator } from "../components/error-indicator.component";
 
 
 export interface ISortItems {
@@ -34,7 +33,7 @@ const Home = inject("pizzas", "filter", "cart")(observer((props: IHome) => {
 
     const { items, isLoaded, error, fetchPizzas } = props.pizzas as IPizzasStore;
     const { category, sortBy } = props.filter as IFiltersStore;
-    const cartItems = props.cart!.items;
+    const { items: cartItems } = props.cart as ICartStore;
 
     useEffect(() => {
       fetchPizzas(sortBy, category);
@@ -42,15 +41,15 @@ const Home = inject("pizzas", "filter", "cart")(observer((props: IHome) => {
 
 
     const onSelectCategory = useCallback((index: number | null) => {
-      // setCategory(index);
+      props.filter!.setCategory(index as number);
     }, []);
 
     const onSelectSortType = useCallback((type: IFiltersSortByState) => {
-      // setSortBy(type);
+      props.filter!.setSortBy(type);
     }, []);
 
     const handleAddPizzaToCart = useCallback((newObj: IPizzasBlockNewObject) => {
-      // addPizzaToCart(newObj);
+      props.cart!.addPizzaToCart(newObj);
     }, []);
 
     const countPizzaOnId = (id: number) => cartItems.reduce((sum, item) => {

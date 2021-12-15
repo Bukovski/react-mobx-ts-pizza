@@ -7,3 +7,4 @@ export { default as PizzaLoadingBlock } from './loading-block.component';
 export { default as CartItem } from './сart-item.component';
 export { default as CartEmpty } from './cart-empty.component';
 export { default as FormOrderPopup } from './from-order-popup.component';
+export { ErrorIndicator } from './error-indicator.component';

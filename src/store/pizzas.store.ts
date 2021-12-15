@@ -1,8 +1,9 @@
 import axios from "axios";
 import { action, makeObservable, observable } from "mobx";
 import { IPizzasJson, IPizzasStore } from "../types/pizzas.type";
+import { IFiltersSortByState } from "../types/filters.type";
+
 import { makePersistable } from "mobx-persist-store";
-import { IFiltersSortByState } from "../../../redux-ts-pizza/src/types/filters.type";
 
 
 export default class PizzasStore implements IPizzasStore {
@@ -28,34 +29,31 @@ export default class PizzasStore implements IPizzasStore {
 
   async fetchPizzas(sortBy: IFiltersSortByState, category: null | number) {
     this.isLoaded = true;
-
     this.error = "";
 
     const url = `/db/pizzas?${
-      (category !== null)
-        ? `category=${ category }`
-        : ''
+      (category === null)
+        ? ''
+        : `category=${ category }`
     }&_sort=${ sortBy.type }&_order=${ sortBy.order }`;
 
     try {
       const response = await axios.get(url);
+      const { data } = response;
 
-      const { data } = response.data;
       this.setPizzas(data);
-
     } catch (error) {
       this.failLoaded("Не получилось загрузить данные. Попробуйте позже");
-    } finally {
-      this.isLoaded = false;
     }
   }
 
   setPizzas(pizzas: IPizzasJson[]) {
-    console.log(pizzas)
+    this.isLoaded = true;
     this.items.push(...pizzas);
   }
 
   failLoaded(error: string) {
+    this.isLoaded = false;
     this.error = error;
   }
 };

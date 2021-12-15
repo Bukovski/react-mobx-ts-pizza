@@ -12,7 +12,7 @@ export interface ICartState {
 }
 
 export interface ICartStore extends ICartState {
-  addPizzaCart(newObj: IPizzasBlockNewObject): void,
+  addPizzaToCart(newObj: IPizzasBlockNewObject): void,
   clearCart(): void,
 }
 

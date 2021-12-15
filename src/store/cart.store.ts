@@ -1,5 +1,5 @@
 import { ICartItem, ICartStore } from "../types/cart.type";
-import { action, makeObservable, observable } from "mobx";
+import { action, makeObservable, observable, toJS } from "mobx";
 import { isEqualObjects } from "../utils/equals";
 import { getTotalCount, getTotalPrice } from "../utils/counters";
 
@@ -33,7 +33,7 @@ class CartStore implements ICartStore {
 
       // toggleIsDone: computed,
 
-      addPizzaCart: action,
+      addPizzaToCart: action,
       // removeCartItem: action,
       // plusCartItem: action,
       // minusCartItem: action,
@@ -41,23 +41,26 @@ class CartStore implements ICartStore {
     });
   }
 
-  addPizzaCart(newObj: ICartItem) {
-    const findItemIndexCart = this.items && this.items.findIndex(
+  addPizzaToCart(newObj: ICartItem) {
+    const cartItem = toJS(this.items);
+
+    const findItemIndexCart = cartItem.findIndex(
       (item) => isEqualObjects(item, newObj, "countItem")
     );
 
-    const currentPizzaItems =
-      (findItemIndexCart === -1)
-        ? [ ...this.items, newObj ]
-        : this.items.map((item, index) => {
-          return (index === findItemIndexCart)
-            ? { ...item, countItem: item.countItem + 1 }
-            : item;
-        })
+    const currentPizzaItems = (findItemIndexCart === -1)
+      ? [ ...cartItem, { ...newObj, countItem: 1 } ]
+      : cartItem.map((item, index) => {
+
+        return (index === findItemIndexCart)
+          ? { ...item, countItem: item.countItem + 1 }
+          : item;
+      })
 
     this.items = currentPizzaItems;
 
     const { totalCount, totalPrice } = carryCountPrice(currentPizzaItems)
+
     this.totalCount = totalCount;
     this.totalPrice = totalPrice;
   }
