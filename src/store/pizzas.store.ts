@@ -3,8 +3,6 @@ import { action, makeObservable, observable } from "mobx";
 import { IPizzasJson, IPizzasStore } from "../types/pizzas.type";
 import { IFiltersSortByState } from "../types/filters.type";
 
-import { makePersistable } from "mobx-persist-store";
-
 
 export default class PizzasStore implements IPizzasStore {
   items: IPizzasJson[];
@@ -24,7 +22,7 @@ export default class PizzasStore implements IPizzasStore {
       fetchPizzas: action.bound,
       setPizzas: action,
     });
-    // makePersistable(this, { name: 'mobx-store', properties: [ 'items' ], storage: window.localStorage });
+
   }
 
   async fetchPizzas(sortBy: IFiltersSortByState, category: null | number) {

@@ -1,8 +1,10 @@
-import { ICartItem, ICartStore } from "../types/cart.type";
 import { action, makeObservable, observable, toJS } from "mobx";
+import { makePersistable } from "mobx-persist-store";
+
 import { isEqualObjects } from "../utils/equals";
 import { getTotalCount, getTotalPrice } from "../utils/counters";
 
+import { ICartItem, ICartStore } from "../types/cart.type";
 
 
 const carryTotalCountPrice = <T extends Function, O extends Function>(fn1: T, fn2: O) => (items: ICartItem[]) => {
@@ -39,6 +41,8 @@ class CartStore implements ICartStore {
       // minusCartItem: action,
       clearCart: action,
     });
+
+    makePersistable(this, { name: 'mobx-store', properties: [ "items", "totalPrice", "totalCount" ], storage: window.localStorage });
   }
 
   addPizzaToCart(newObj: ICartItem) {
@@ -134,7 +138,7 @@ class CartStore implements ICartStore {
     this.totalCount = 0;
     this.items = [];
   }
-};
+}
 
 
 export default CartStore;
