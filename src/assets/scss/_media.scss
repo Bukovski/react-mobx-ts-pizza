@@ -1,7 +1,7 @@
 /*==========  Desktops First  ==========*/
 
 /* Large Devices, Wide Screens */
-@media only screen and (max-width : 1200px) {
+@media only screen and (max-width : 1270px) {
   html {
     font-size: 12px;
   }
@@ -36,14 +36,21 @@
     padding: 20px 0;
   }
   
+  .button {
+    padding: 0.8rem 1.5rem;
+  
+    span {
+      font-size: 1.5rem;
+      font-weight: 100;
+    }
+  }
+  
   .wrapper {
     width: calc(100% - 40px);
   }
   
   .content {
-    &__title {
-      font-size: 36px;
-    }
+    padding: 15px 0;
     
     &__items {
       grid-template-columns: 1fr;
@@ -66,7 +73,13 @@
       flex-direction: column;
       
       .content__title {
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+      }
+    }
+    
+    &--empty {
+      img {
+        margin: 2rem auto;
       }
     }
     
@@ -81,8 +94,13 @@
         
         img {
           width: 60%;
-          height: 60%;
+          height: auto;
         }
+        
+      }
+      
+      .button {
+        padding: 0;
       }
       
       &-info {
@@ -123,8 +141,9 @@
       &-price {
         align-items: flex-start;
         justify-content: flex-start;
-        order: 3;
+        width: auto;
         margin: 10px 0;
+        order: 3;
         
         b {
           font-size: 26px;
@@ -150,12 +169,16 @@
     
     ul {
       li {
-        padding: 10px 20px;
+        padding: 0.8rem 1.7rem;
+        font-size: 1.6rem;
+        font-weight: 100;
       }
     }
   }
   
   .header {
+    padding: 15px 0;
+    
     .container {
       flex-direction: column;
       
@@ -171,6 +194,10 @@
       padding-bottom: 45px;
       border-bottom: 1px solid #efefef;
     }
+    
+    &__price {
+      font-size: 2.5rem;
+    }
   }
 }
 
@@ -180,11 +207,52 @@
     font-size: 9px;
   }
   
+  .pizza-block {
+    margin: 5px auto !important;
+    padding-bottom: 15px !important;
+  
+    &__title {
+      margin-bottom: 10px;
+      font-size: 2.2rem;
+    }
+  }
+  
   .cart {
+    .content__title {
+      font-size: 2.6rem;
+    }
+  
     &__item {
+      text-align: center;
+      
       h3 {
-        font-size: 24px;
+        font-size: 3rem;
+        margin: 5px auto;
       }
+      
+      p {
+        font-size: 2.3rem;
+      }
+      
+      &-price {
+        display: inline-block;
+        
+        b {
+          font-size: 2.5rem;
+        }
+      }
+      
+      &-count {
+        width: 100px;
+        margin: 0 auto;
+      }
+      
+      .button {
+        width: 30px;
+        height: 32px;
+      }
+  
+      
     }
     
     &__bottom {

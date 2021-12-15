@@ -29,6 +29,7 @@ body {
 
   &__title {
     margin: 35px 0;
+    font-size: 2.8rem;
   }
 
   &__items {
@@ -280,6 +281,7 @@ body {
       }
 
       .pay-btn {
+        display: inline-block;
         width: 210px;
         padding: 16px;
         font-size: 16px;
@@ -290,11 +292,12 @@ body {
 
   &--empty {
     margin: 0 auto;
-    width: 560px;
+    max-width: 560px;
+    width: 100%;
     text-align: center;
 
     h2 {
-      font-size: 32px;
+      font-size: 3rem;
       margin-bottom: 10px;
     }
 
@@ -313,7 +316,9 @@ body {
 
     img {
       display: block;
-      width: 300px;
+      max-width: 300px;
+      width: 100%;
+      height: auto;
       margin: 45px auto 60px;
     }
 
