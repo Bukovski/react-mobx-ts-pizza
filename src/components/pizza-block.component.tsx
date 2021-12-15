@@ -1,24 +1,42 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { IPizzasJson } from "../types/pizzas.type";
+
+import { Button } from "./index";
+
+import { IPizzasBlockNewObject, IPizzasJson } from "../types/pizzas.type";
 
 
+interface IPizzasBlock {
+  addedCount?: number,
+  onClickAddPizza: (obj: IPizzasBlockNewObject) => void,
+}
 
-const PizzaBlock = (props: IPizzasJson) => {
-  const { name, imageUrl, price, types, sizes } = props;
+
+const PizzaBlock = (props: IPizzasJson & IPizzasBlock) => {
+    const { id, name, imageUrl, price, types, sizes, onClickAddPizza, addedCount } = props;
 
   const availableTypes: string[] = [ 'тонкое', 'традиционное' ];
   const availableSizes: number[] = [ 26, 30, 40 ];
 
   const [ activeType, setActiveType ] = useState(types[ 0 ]);
-  const [ activeSize, setActiveSize ] = useState(sizes[ 0 ]);
+  const [ activeSize, setActiveSize ] = useState(0);
 
   const onSelectType = (index: number) => setActiveType(index);
 
   const onSelectSize = (index: number) => setActiveSize(index);
 
+  const onAddPizza = () => {
+    const obj: IPizzasBlockNewObject = {
+      id, name, imageUrl, price,
+      size: availableSizes[ activeSize ],
+      type: availableTypes[ activeType ],
+    };
+
+    onClickAddPizza(obj);
+  };
+
   return (
-    <section className="pizza-block">
+    <section data-testid="pizza-block" className="pizza-block">
       <img className="pizza-block__image" src={ imageUrl } alt="Pizza" />
       <h4 className="pizza-block__title">{ name }</h4>
       <div className="pizza-block__selector">
@@ -34,7 +52,8 @@ const PizzaBlock = (props: IPizzasJson) => {
               }>
               { type }
             </li>
-          ))}
+          ))
+          }
         </ul>
         <ul>
           {
@@ -55,7 +74,7 @@ const PizzaBlock = (props: IPizzasJson) => {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от { price } ₽</div>
-        <div className="button button--outline button--add">
+        <Button onClick={ onAddPizza } className="button--add" outline>
           <svg
             width="12"
             height="12"
@@ -68,8 +87,8 @@ const PizzaBlock = (props: IPizzasJson) => {
             />
           </svg>
           <span>Добавить</span>
-          <i>2</i>
-        </div>
+          { (addedCount !== 0) && <i>{ addedCount }</i> }
+        </Button>
       </div>
     </section>
   );

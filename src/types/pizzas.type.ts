@@ -1,3 +1,5 @@
+import { IFiltersSortByState } from "../../../redux-ts-pizza/src/types/filters.type";
+
 export interface IPizzasJson {
     id: number;
     imageUrl: string;
@@ -23,7 +25,8 @@ export interface IPizzasStore {
     items: IPizzasJson[],
     isLoaded: boolean,
     error: string,
-    fetchPizzas(): void,
-    setPizzas(pizzas: IPizzasJson[]): void
+    fetchPizzas(sortBy: IFiltersSortByState, category: null | number): void,
+    setPizzas(pizzas: IPizzasJson[]): void,
+    failLoaded(error: string): void
 }
 

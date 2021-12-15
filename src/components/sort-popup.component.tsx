@@ -1,26 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useComponentVisible from "../hooks/useComponentVisible";
+
+import { ISortItems } from "../pages/home.page";
+import { IFiltersSortByState } from "../types/filters.type";
 
 
 interface ISortPopup {
-  items: {
-    name : string,
-    type : string
-  }[]
+  items: ISortItems[],
+  activeSortType: string,
+  onClickSortType: (type: IFiltersSortByState) => void
 }
 
 
-const SortPopup = (props: ISortPopup) => {
-  const { items } = props;
+const SortPopup = React.memo((props: ISortPopup) => {
+  const { items, activeSortType, onClickSortType } = props;
 
   const { ref, isComponentVisible, setIsComponentVisible } = useComponentVisible(false);
-  const [ activeItem, setActiveItem ] = useState<number>(0);
-  const activeLabel = items[ activeItem ].name;
+
+  const activeLabel = items.find((obj) => obj.type === activeSortType)?.name;
+
 
   const toggleVisiblePopup = () => setIsComponentVisible(!isComponentVisible);
 
-  const onSelectItem = (index: number) => {
-    setActiveItem(index);
+  const onSelectItem = (index : ISortItems) => {
+    if (onClickSortType) {
+      onClickSortType(index);
+    }
     setIsComponentVisible(false);
   };
 
@@ -41,17 +46,18 @@ const SortPopup = (props: ISortPopup) => {
           />
         </svg>
         <b>Сортировка по:</b>
-        <span onClick={ toggleVisiblePopup }>{ activeLabel }</span>
+        <span data-testid="sort-visible" onClick={ toggleVisiblePopup }>{ activeLabel }</span>
       </div>
       { isComponentVisible &&
       (
-        <div className="sort__popup">
+        <div data-testid="sort-popup" className="sort__popup">
           <ul>
             { items &&
             items.map((itemObj, index) => (
               <li
-                onClick={ () => onSelectItem(index) }
-                className={ activeItem === index ? 'active' : '' }
+                data-testid="sort-popup-item"
+                onClick={ () => onSelectItem(itemObj) }
+                className={ activeSortType === itemObj.type ? 'active' : '' }
                 key={ `${ itemObj.type }_${ index }` }>
                 { itemObj.name }
               </li>
@@ -62,7 +68,7 @@ const SortPopup = (props: ISortPopup) => {
       }
     </div>
   );
-}
+})
 
 
 export default SortPopup;

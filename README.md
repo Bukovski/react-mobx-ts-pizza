@@ -61,7 +61,7 @@ npm run start
 - [react-error-boundary](https://github.com/bvaughn/react-error-boundary) catches errors in the wrapped component
 - [mobx](https://mobx.js.org/README.html) state management
 - [mobx-react](https://github.com/mobxjs/mobx-react) component wrapper for combining React with MobX
-- [mobx-persist](https://github.com/pinqy520/mobx-persist) save data from mobx store to localStorage
+- [mobx-persist-store](https://github.com/quarrant/mobx-persist-store) save data from mobx store to localStorage
 - load picture for error message from [error-picture](https://icons8.ru/illustrations/web-elements/404-error) 
 - [coveralls](https://github.com/nickmerwin/node-coveralls) - coverage reporting of [coveralls.io](https://coveralls.io/) and add a cool coverage button
 

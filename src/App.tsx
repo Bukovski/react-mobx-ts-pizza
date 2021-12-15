@@ -1,35 +1,23 @@
-import React, { useEffect } from 'react';
-import { Route } from 'react-router-dom';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import { Cart, Home } from "./pages";
+import { Cart, Home, NotFound } from "./pages";
 import { Header } from "./components";
 
-import { IPizzasStore } from "./types/pizzas.type";
-import { inject, observer } from "mobx-react";
 
-
-interface IApp {
-  pizzas?: IPizzasStore
-}
-
-const App = inject("pizzas")(observer((props: IApp) => {
-    const { items, fetchPizzas } = props.pizzas!;
-
-    useEffect(() => {
-      fetchPizzas();
-    }, []);
-
-
-    return (
-      <div className="wrapper">
-        <Header />
-        <div className="content">
-          <Route path="/" render={ () => <Home items={ items } /> } exact />
+const App = () => {
+  return (
+    <div className="wrapper">
+      <Header />
+      <div className="content">
+        <Switch>
+          <Route path="/" component={ Home } exact />
           <Route path="/cart" component={ Cart } exact />
-        </div>
+          <Route path="*" component={ NotFound } />
+        </Switch>
       </div>
-    );
-  })
-)
+    </div>
+  );
+}
 
 export default App;
