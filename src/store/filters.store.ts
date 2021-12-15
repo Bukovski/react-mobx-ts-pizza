@@ -8,7 +8,7 @@ export default class FilterStore implements IFiltersStore {
   sortBy : IFiltersSortByState;
 
   constructor() {
-    this.category = 0;
+    this.category = null;
     this.sortBy = {
       type: 'popular',
       order: 'desc',

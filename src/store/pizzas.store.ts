@@ -49,7 +49,7 @@ export default class PizzasStore implements IPizzasStore {
 
   setPizzas(pizzas: IPizzasJson[]) {
     this.isLoaded = true;
-    this.items.push(...pizzas);
+    this.items = pizzas;
   }
 
   failLoaded(error: string) {
