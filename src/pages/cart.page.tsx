@@ -40,7 +40,7 @@ function Cart(props: ICart) {
   }, []);
 
   const handleMinusItem = useCallback((index: number) => {
-    // minusCartItem(index);
+    props.cart!.minusCartItem(index);
   }, []);
 
   const toggleVisiblePopup = () => setIsComponentVisible(!isComponentVisible);
