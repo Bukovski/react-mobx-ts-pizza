@@ -61,29 +61,18 @@ class CartStore implements ICartStore {
           : item;
       })
 
-    this.items = currentPizzaItems;
-
-    const { totalCount, totalPrice } = carryCountPrice(currentPizzaItems)
-
-    this.totalCount = totalCount;
-    this.totalPrice = totalPrice;
+    this._updateData(currentPizzaItems);
   }
 
-  // removeCartItem() {
-  //   const newItems = [ ...state.items ];
-  //   const currentTotalPrice = newItems[ action.payload ].totalPrice;
-  //   const currentTotalCount = newItems[ action.payload ].items.length;
-  //
-  //   delete newItems[ action.payload ];
-  //
-  //   return {
-  //     ...state,
-  //     items: newItems,
-  //     totalPrice: state.totalPrice - currentTotalPrice,
-  //     totalCount: state.totalCount - currentTotalCount,
-  //   };
-  // }
-  //
+  removeCartItem(index: number) {
+    const newItems = JSON.parse(JSON.stringify( toJS(this.items) )); // deep copy
+
+    // remove form item array. Use index element
+    newItems.splice(index, 1);
+
+    this._updateData(newItems);
+  }
+
   plusCartItem(index: number) {
     const newItems = [
       ...this.items.slice(0, index),
@@ -94,12 +83,7 @@ class CartStore implements ICartStore {
       ...this.items.slice(index + 1)
     ];
 
-    this.items = newItems;
-
-    const { totalCount, totalPrice } = carryCountPrice(newItems)
-
-    this.totalCount = totalCount;
-    this.totalPrice = totalPrice;
+    this._updateData(newItems);
   }
 
   minusCartItem(index: number) {
@@ -113,13 +97,17 @@ class CartStore implements ICartStore {
         ...this.items.slice(index + 1)
       ];
 
-      this.items = newItems;
-
-      const { totalCount, totalPrice } = carryCountPrice(newItems)
-
-      this.totalCount = totalCount;
-      this.totalPrice = totalPrice;
+      this._updateData(newItems);
     }
+  }
+
+  _updateData(newObject: ICartItem[]) {
+    this.items = newObject;
+
+    const { totalCount, totalPrice } = carryCountPrice(newObject)
+
+    this.totalCount = totalCount;
+    this.totalPrice = totalPrice;
   }
 
   clearCart() {

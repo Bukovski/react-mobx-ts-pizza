@@ -31,7 +31,7 @@ function Cart(props: ICart) {
 
   const handleRemoveItem = useCallback((index: number) => {
     if (window.confirm('Вы действительно хотите удалить?')) {
-      // removeCartItem(index);
+      props.cart!.removeCartItem(index);
     }
   }, []);
 
@@ -49,7 +49,7 @@ function Cart(props: ICart) {
     console.log(JSON.stringify({ items: items, phone: phone }, null, 4))
     toggleVisiblePopup();
 
-    // clearCart();
+    props.cart!.clearCart();
     history.push("/");
   };
 
