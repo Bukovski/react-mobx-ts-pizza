@@ -84,29 +84,23 @@ class CartStore implements ICartStore {
   //   };
   // }
   //
-  // plusCartItem() {
-  //   const newObjItems = [
-  //     ...state.items[ action.payload ].items,
-  //     state.items[ action.payload ].items[0],
-  //   ];
-  //   const newItems = {
-  //     ...state.items,
-  //     [ action.payload ]: {
-  //       items: newObjItems,
-  //       totalPrice: getTotalPrice(newObjItems),
-  //     },
-  //   };
-  //
-  //   const totalCount = getTotalSum(newItems, 'items.length');
-  //   const totalPrice = getTotalSum(newItems, 'totalPrice');
-  //
-  //   return {
-  //     ...state,
-  //     items: newItems,
-  //     totalCount,
-  //     totalPrice,
-  //   };
-  // }
+  plusCartItem(index: number) {
+    const newItems = [
+      ...this.items.slice(0, index),
+      {
+        ...this.items[ index ],
+        countItem: this.items[ index ].countItem + 1
+      },
+      ...this.items.slice(index + 1)
+    ];
+
+    this.items = newItems;
+
+    const { totalCount, totalPrice } = carryCountPrice(newItems)
+
+    this.totalCount = totalCount;
+    this.totalPrice = totalPrice;
+  }
   //
   // minusCartItem() {
   //   const oldItems = state.items[ action.payload ].items;
