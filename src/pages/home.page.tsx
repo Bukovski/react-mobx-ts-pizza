@@ -21,8 +21,8 @@ interface IHome {
 }
 
 
-const categoryNames: string[] = [ 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые' ];
-const sortItems: ISortItems[] = [
+export const categoryNames: string[] = [ 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые' ];
+export const sortItems: ISortItems[] = [
   { name: 'популярности', type: 'popular', order: 'desc' },
   { name: 'цене', type: 'price', order: 'desc' },
   { name: 'алфавит', type: 'name', order: 'asc' },

@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormOrderPopup Component FormOrderPopup form not visible 1`] = `
+<div
+  class="form-order form-order__hide"
+>
+  <span
+    class="form-order--close"
+    data-testid="close-window-button"
+  >
+    ×
+  </span>
+  <form
+    class="form-order--form"
+  >
+    <p
+      class="form-order--label"
+    >
+      Для заказа: введите свой телефон и мы вам перезвоним
+    </p>
+    <input
+      class="form-order--input"
+      max="10"
+      min="10"
+      name="phone"
+      placeholder="(xxx) xxx-xxxx"
+      type="text"
+      value=""
+    />
+    
+    <div
+      class="form-order--btn-container"
+    >
+      <button
+        class="button"
+      >
+        Сбросить
+      </button>
+      <button
+        class="button form-order--primary"
+      >
+        Отправить
+      </button>
+    </div>
+  </form>
+</div>
+`;

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button Component should render with children and spy on click 1`] = `
+<button
+  class="button"
+>
+  <span>
+    Button text
+  </span>
+</button>
+`;
+
+exports[`Button Component should render with custom className & outline 1`] = `
+<button
+  class="button form-order--primary button--outline"
+>
+  <span>
+    Button text
+  </span>
+</button>
+`;
