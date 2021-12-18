@@ -68,6 +68,18 @@ describe("Cart Page", () => {
 			expect(screen.getByText('10 шт.').closest('span')).toHaveTextContent("Всего пицц: 10 шт.");
 			expect(screen.getByText('5800 ₽').closest('span')).toHaveTextContent("Сумма заказа: 5800 ₽");
 		});
+		
+		it("change the number of pizzas, minus one if item equal 1", () => {
+			expect(screen.getByText('11 шт.').closest('span')).toHaveTextContent("Всего пицц: 11 шт.");
+			expect(screen.getByText('6380 ₽').closest('span')).toHaveTextContent("Сумма заказа: 6380 ₽");
+			
+			const cartItemId = screen.getByTestId("cart-item-1");
+			
+			userEvent.click(cartItemId.querySelector(".cart__item-count-minus"));
+			
+			expect(screen.getByText('11 шт.').closest('span')).toHaveTextContent("Всего пицц: 11 шт.");
+			expect(screen.getByText('6380 ₽').closest('span')).toHaveTextContent("Сумма заказа: 6380 ₽");
+		});
 
 		it("if cart item have only 1 pizza, it cannot be taken away", () => {
 			expect(screen.getAllByRole("img", { name: "Pizza" }).length).toBe(6);
