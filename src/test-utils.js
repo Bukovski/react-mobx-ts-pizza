@@ -4,7 +4,11 @@ import { createMemoryHistory } from "history";
 import { Provider } from "mobx-react";
 import { render } from "@testing-library/react";
 import { rootStore } from "./store";
+import { configure } from "mobx";
 
+configure({
+	enforceActions: "never",
+})
 
 export const renderWithRouter = (component) => {
 	const history = createMemoryHistory();
@@ -18,11 +22,8 @@ export const renderWithRouter = (component) => {
 	}
 }
 
-export const renderWithRouterMobx = (component,
-                                     { initialState } = {},
-                                     store = {
-	...rootStore, ...initialState }) => {
-	const history = createMemoryHistory()
+export const renderWithRouterMobx = (component,	{ store } = { store: rootStore }) => {
+	const history = createMemoryHistory();
 	
 	return {
 		...render(

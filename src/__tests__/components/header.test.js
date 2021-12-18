@@ -11,8 +11,7 @@ describe("Header Component", () => {
 		const { container } =
 			renderWithRouterMobx(
 					<Header/>
-					,{
-						initialState: {
+					,{ store: {
 							cart: {
 								totalPrice: 1375,
 								totalCount: 5
