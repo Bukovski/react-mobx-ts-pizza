@@ -13,8 +13,8 @@ interface IHeader {
 }
 
 const Header = inject("cart")(observer((props: IHeader) => {
-    const totalPrice = props.cart!.totalPrice || 0,
-      totalCount = props.cart!.totalCount || 0;
+    const totalPrice = props.cart!.totalPrice,
+      totalCount = props.cart!.totalCount;
 
     return (
       <header className="header">

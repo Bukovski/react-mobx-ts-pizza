@@ -36,3 +36,5 @@ export const renderWithRouterMobx = (component,	{ store } = { store: rootStore }
 		store
 	}
 }
+
+export const waitXSecond = (delay) => new Promise((r) => setTimeout(r, delay));
