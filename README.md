@@ -17,6 +17,7 @@
     </a>
 </p>
 
+[![Coverage Status](https://coveralls.io/repos/github/Bukovski/react-mobx-ts-pizza/badge.svg?branch=main)](https://coveralls.io/github/Bukovski/react-mobx-ts-pizza?branch=main)
 
 ## Order pizza in our educational online store.
 
