@@ -1,5 +1,5 @@
 <h1 align="center">
-  React Redux TS Pizza<img src="./screenshots/pizza-icon.png" alt="pizza-icon" title="pizza-icon" width="45"/>
+  React Mobx TS Pizza<img src="./screenshots/pizza-icon.png" alt="pizza-icon" title="pizza-icon" width="45"/>
 </h1>
 
 <p align="center">
@@ -20,6 +20,8 @@
 
 ## Order pizza in our educational online store.
 
+The same project made on `Redux` can be found at [the link](https://github.com/Bukovski/redux-ts-pizza)
+
 Link on [figma page](https://www.figma.com/file/wWUnQwvRDWBfPx1v1pCAfO/React-Pizza?node-id=0%3A1) design
 
 🍕[Live page](https://react-pizza-ts.herokuapp.com/)
@@ -34,8 +36,8 @@ All data from the pizza cart will be stored in localStorage. Added error handlin
 ## Installation and Running
 
 ```sh
-git clone git@github.com:Bukovski/redux-ts-pizza.git
-cd redux-ts-pizza
+git clone git@github.com:Bukovski/react-mobx-ts-pizza.git
+cd react-mobx-ts-pizza
 npm install
 npm run server
 npm run start
@@ -47,7 +49,39 @@ npm run start
 - `/` store page
 - `/cart` pizza cart
 - `404` page not found
- 
+
+
+
+## Folders tree
+
+```
+|–– src
+|  |–– assets
+|  |  |–– fonts
+|  |  |  |–– ProximaNova-Black
+|  |  |  |–– ProximaNova-Bold
+|  |  |  |–– ProximaNova-Extrabld
+|  |  |  |–– ProximaNova-Regular
+|  |  |–– img
+|  |  |–– scss
+|  |  |  |–– components
+|  |  |  |–– libs
+|  |  |  |–– _mixins
+|  |–– components
+|  |–– hooks
+|  |–– __mocks__
+|  |–– pages
+|  |–– store
+|  |–– __tests__
+|  |  |–– components
+|  |  |  |–– __snapshots__
+|  |  |–– pages
+|  |  |  |–– __snapshots__
+|  |  |–– utils
+|  |–– types
+|  |–– utils
+
+```
 
 
 ## Technologies
@@ -65,3 +99,9 @@ npm run start
 - load picture for error message from [error-picture](https://icons8.ru/illustrations/web-elements/404-error) 
 - [coveralls](https://github.com/nickmerwin/node-coveralls) - coverage reporting of [coveralls.io](https://coveralls.io/) and add a cool coverage button
 
+
+![main-page](./screenshots/main-page.jpg)
+![cart-with-orders](./screenshots/cart-with-order.jpg)
+![cart-empty](./screenshots/cart-empty.jpg)
+![error-page](./screenshots/error-page.jpg)
+![404-page](./screenshots/404-page.jpg)
