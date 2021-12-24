@@ -1,4 +1,4 @@
-import { IFiltersSortByState } from "../../../redux-ts-pizza/src/types/filters.type";
+import { IFiltersSortByState } from "./filters.type";
 
 export interface IPizzasJson {
     id: number;
